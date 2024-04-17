@@ -28,6 +28,12 @@ gem "pry", "~> 0.14.2"
 
 gem "pry-remote", "~> 0.1.8"
 
+gem "mailcatcher"
+
+gem 'simple_form'
+
+gem "devise"
+
 group :development, :test do
   gem "rspec-rails", "~> 6.1.0"
 
