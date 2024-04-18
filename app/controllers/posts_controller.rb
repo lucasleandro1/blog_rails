@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments
   end
 
   def update
@@ -40,6 +41,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:id, :text, :logo)
+    params.require(:post).permit(:id, :text, :tag, :logo)
   end
 end

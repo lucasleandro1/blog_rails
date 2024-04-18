@@ -1,5 +1,7 @@
 <%= simple_form_for @post do |f| %>
   <%= f.input :text %>
   <%= f.input :tag %>
-  <%= f.button :submit %>
+  <%= image_tag(url_for(@post.logo), class: "post-logo") unless @post.new_record? && !@post.logo.nil?%>
+  <%= f.input :logo %>
+  <%= f.button :submit , class: "btn btn-primary btn-block"%>
 <% end %>

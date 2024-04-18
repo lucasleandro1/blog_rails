@@ -2,7 +2,10 @@
 
 Rails.application.routes.draw do
 
-  resources :posts, only: [:new, :edit, :create, :update]
+  resources :posts, only: [:new, :edit, :create, :update, :show, :index]
+  resources :posts do
+    resources :comments, only: [:create, :new]
+  end
   root to: "home#index"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

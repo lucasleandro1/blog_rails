@@ -1,1 +1,25 @@
-<h1>Blog#</h1>
+<h1>Posts</h1>
+<% @posts.each do |post| %>
+  <div class="post">
+    <h2><%= post.text %></h2>
+    <p><%= post.tag %></p>
+  </div>
+  <%= simple_form_for [ post, post.comments.build ], html: { class: 'comment-form' } do |form| %>
+    <% form.hidden_field :user_id, value: post.user_id %>
+
+    <%= form.input :text, label: false, placeholder: "Escreva seu comentário..." %>
+    <%= form.submit "Comentar", class: "btn btn-primary" %>
+  <% end %>
+  <h5>Comentários</h5>
+  <% if post.comments.select(&:persisted?).present? %>
+    <% post.comments.select(&:persisted?).each do |comment| %>
+      <div class="comment">
+        <p><%= "#{comment.text} - #{comment.user.nil? ? "Anônimo" : comment.user&.email}" %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>Não há comentários para este post.</p>
+  <% end %>
+  <hr>
+<% end %>
+
