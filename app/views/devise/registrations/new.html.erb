@@ -1,25 +1,18 @@
-<h2>Sign up</h2>
-
+<h2 class="h3 mb-3 font-weight-normal" style="text-align: center; padding-top: 10px">Sign in</h2>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+  <%=f.error_notification%>
+    <div class="field">
+      <%= f.input :email, required: true, label: false, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "E-mail" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.input :password, required: true, label: false, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+      <%= f.input :password_confirmation, required: true, label: false,autocomplete: "new-password", class: "form-control", placeholder: "Password confirmation" %>
+    </div>
+  <div class="actions">
+    <%= f.submit "Sign up", class: "btn btn-primary btn-block"%>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+  <hr>
+  <%= render "devise/shared/links" %>
 <% end %>
-
-<%= render "devise/shared/links" %>
