@@ -3,8 +3,8 @@
   <div class="post">
     <h2><%= post.text %></h2>
     <p><%= post.tag %></p>
-    <% if post.logo.attached? %>
-      <%= image_tag(post.logo, class: "post-logo") %>
+    <% if post.foto.attached? %>
+      <%= image_tag(post.foto, class: "post-foto") %>
     <% end %>
   </div>
   <%= simple_form_for [ post, post.comments.build ], html: { class: 'comment-form' } do |form| %>

@@ -1,13 +1,13 @@
 <%= simple_form_for @post do |f| %>
-  <%= f.input :text %>
-  <%= f.input :tag %>
-  <% if @post.persisted? && @post.logo.attached? %>
-    <div class="post-logo">
-      <%= image_tag(@post.logo, class: "post-logo") %>
+  <%= f.input :text, required: true, label: false, autofocus: true, autocomplete: "text", class: "form-control", placeholder: "Text"%>
+  <%= f.input :tag, required: true, label: false, autofocus: true, autocomplete: "tag", class: "form-control", placeholder: "Tag" %>
+  <% if @post.persisted? && @post.foto.attached? %>
+    <div class="post-foto">
+      <%= image_tag(@post.foto, class: "post-foto") %>
     </div>
   <% end %>
 
-  <%= f.input :logo, as: :file %>
+  <%= f.input :foto, as: :file %>
 
   <%= f.button :submit, class: "btn btn-primary btn-block" %>
 <% end %>
