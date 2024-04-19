@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
 
-  resources :posts, only: [:new, :edit, :create, :update, :show, :index]
+  resources :posts
   resources :posts do
     resources :comments, only: [:create, :new]
   end

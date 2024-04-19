@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @user = current_user
+    @posts = @user.posts
+  end
+
   def new
     @post = current_user.posts.build
   end
@@ -17,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @comment = @post.comments
   end
 
@@ -27,6 +32,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post atualizado com sucesso."
       redirect_to root_path
     else
+      flash[:error] = "Post não atualizado."
       render :edit
     end
   end
@@ -36,7 +42,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
   end
 
-  def delete
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, notice: 'Post excluído com sucesso.'
   end
 
   private

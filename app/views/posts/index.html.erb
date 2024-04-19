@@ -1,0 +1,20 @@
+<h1>Posts do Usuário <%= @user.email %></h1>
+
+<% if @posts.any? %>
+  <ul>
+    <% @posts.each do |post| %>
+    <%= link_to( "Edit", edit_post_path(post), class:"btnout")%>
+    <%= button_to( 'Excluir', post_path(post), method: :delete, data: { confirm: 'Tem certeza que deseja excluir este post?' }) %>
+      <div class="post">
+        <h2><%= post.text %></h2>
+        <p><%= post.tag %></p>
+        <% if post.logo.attached? %>
+          <%= image_tag(post.logo, class: "post-logo") %>
+        <% end %>
+        <hr>
+      </div>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Nenhum post encontrado.</p>
+<% end %>
