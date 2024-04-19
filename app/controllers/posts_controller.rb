@@ -22,17 +22,18 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = current_user.post
+    @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "post updated successfully."
+      flash[:notice] = "Post atualizado com sucesso."
       redirect_to root_path
     else
       render :edit
     end
   end
 
+
   def edit
-    @post = current_user.post
+    @post = current_user.posts.find(params[:id])
   end
 
   def delete

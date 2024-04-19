@@ -3,6 +3,9 @@
   <div class="post">
     <h2><%= post.text %></h2>
     <p><%= post.tag %></p>
+    <% if post.logo.attached? %>
+      <%= image_tag(post.logo, class: "post-logo") %>
+    <% end %>
   </div>
   <%= simple_form_for [ post, post.comments.build ], html: { class: 'comment-form' } do |form| %>
     <% form.hidden_field :user_id, value: post.user_id %>
@@ -22,4 +25,6 @@
   <% end %>
   <hr>
 <% end %>
-
+<div class="pagination">
+  <%= paginate @posts%>
+</div>

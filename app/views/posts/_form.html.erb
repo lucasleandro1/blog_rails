@@ -1,7 +1,13 @@
 <%= simple_form_for @post do |f| %>
   <%= f.input :text %>
   <%= f.input :tag %>
-  <%= image_tag(url_for(@post.logo), class: "post-logo") unless @post.new_record? && !@post.logo.nil?%>
-  <%= f.input :logo %>
-  <%= f.button :submit , class: "btn btn-primary btn-block"%>
+  <% if @post.persisted? && @post.logo.attached? %>
+    <div class="post-logo">
+      <%= image_tag(@post.logo, class: "post-logo") %>
+    </div>
+  <% end %>
+
+  <%= f.input :logo, as: :file %>
+
+  <%= f.button :submit, class: "btn btn-primary btn-block" %>
 <% end %>
