@@ -10,8 +10,7 @@ services:
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
-    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
-    startCommand: "REDIS_URL="redis://${REDIS_HOST}" bundle exec puma -C config/puma.rb"
+    startCommand: "REDIS_URL=redis://$REDIS_HOST bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -20,9 +19,15 @@ services:
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
-        value: 4 # sensible default
-      - type: redis
-        name: redis
-        ipAllowlist: []
-        plan: free
-        maxmemoryPolicy: noeviction
+        value: 4
+      - key: REDIS_HOST
+        fromService:
+          name: redis
+          type: redis
+          property: hostport
+
+  - type: redis
+    name: redis
+    ipAllowlist: []
+    plan: free
+    maxmemoryPolicy: noeviction
