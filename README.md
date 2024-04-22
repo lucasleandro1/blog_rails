@@ -8,7 +8,16 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 Ruby 3.2.2
 redis 7.0
 
-🚀 Instrução
+🚀 Instrução (Produção)
+Acesse o link: https://blog-rails-web.onrender.com/
+
+- Caso queira utilizar um usuário já criado, segue o login:
+```
+exemplo@gmail.com
+123456
+```
+
+🚀 Instrução (Local)
 Use o seguinte comando para clonar o repositório:
 * cd ~
 * git clone https://github.com/lucasleandro1/blog_rails.git
