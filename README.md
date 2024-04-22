@@ -11,7 +11,7 @@ redis 7.0
 🚀 Instrução (Produção)
 Acesse o link: https://blog-rails-web.onrender.com/
 
-- Caso queira utilizar um usuário já criado, segue o login:
+- Caso queira utilizar um usuário já criado, segue o +login:
 ```
 exemplo@gmail.com
 123456
@@ -38,3 +38,14 @@ Rode os comandos:
 * acesse http://127.0.0.1:1080 caso queira acessar o mailcatcher
 * bundle exec rake start_services:all
 * Acesse o projeto em http://localhost:3000.
+
+📝 Publicação via arquivo .txt
+O arquivo .txt deve ter seguir o padrão abaixo:
+```json
+{"posts": [
+  {"user_email": "exemplo@gmail.com", "post_text": "Teste de mensagem"}
+  ]
+}
+```
+
+Segue um arquivo de para teste: [teste.txt](https://files.fm/f/yct4njmxuz)
