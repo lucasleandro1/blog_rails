@@ -6,7 +6,7 @@ Blog desenvolvido para processo seletivo.
 Antes de começar, certifique-se de ter instalado em sua máquina:
 
 Ruby 3.2.2
-Rails 7.1.1
+redis 7.0
 
 🚀 Instrução
 Use o seguinte comando para clonar o repositório:

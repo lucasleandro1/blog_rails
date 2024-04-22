@@ -1,0 +1,28 @@
+databases:
+  - name: blog_rails
+    databaseName: blog_rails_prod
+    user: blog_rails
+    plan: free
+
+services:
+  - type: web
+    name: blog_rails_web
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: blog_rails_database
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 4 # sensible default
+  - type: redis
+    name: redis
+    ipAllowlist: []
+    plan: free
+    maxmemoryPolicy: noeviction

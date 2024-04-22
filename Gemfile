@@ -6,6 +6,8 @@ ruby "3.2.2"
 
 gem "rails", "~> 7.1.1"
 
+gem 'pg'
+
 gem "sprockets-rails"
 
 gem "sqlite3", "~> 1.4"
