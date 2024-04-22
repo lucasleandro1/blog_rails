@@ -24,6 +24,7 @@ Instruções para instalar versão 7.0 redis que é necessario para o uso do sid
 Rode os comandos:
 * cd ~
 * cd blog_rails
+* bundle install
 * mailcatcher (Para trocar a senha de usuario se preciso)
 * acesse http://127.0.0.1:1080 caso queira acessar o mailcatcher
 * bundle exec rake start_services:all
