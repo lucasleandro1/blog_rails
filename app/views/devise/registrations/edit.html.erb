@@ -6,26 +6,26 @@
   <div class="field">
     <%= f.input :email, required: true, label: false, autofocus: true, autocomplete: "email",  class: "form-control", placeholder: "E-mail"%>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div>Aguardando confirmação para: <%= resource.unconfirmed_email %></div>
     <% end %>
-    <p>(leave blank if you don't want to change it)</p>
-    <%= f.password_field :password, required: true, label: false, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+    <p>(Deixe em branco se não quiser alterar)</p>
+    <%= f.password_field :password, required: true, label: false, autocomplete: "new-password", class: "form-control", placeholder: "Senha" %>
     <% if @minimum_password_length %>
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> Mínimo de caracteres</em>
     <% end %>
-    <%= f.password_field :password_confirmation, required: true, label: false,autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation"  %>
-    <p>(we need your current password to confirm your changes)</p>
-    <%= f.password_field :current_password,  required: true, label: false, autocomplete: "current-password", class: "form-control", placeholder: "Current Password" %>
+    <%= f.password_field :password_confirmation, required: true, label: false,autocomplete: "new-password", class: "form-control", placeholder: "Confirmar senha"%>
+    <p>(Precisamos da sua senha atual para confirmar suas alterações)</p>
+    <%= f.password_field :current_password,  required: true, label: false, autocomplete: "current-password", class: "form-control", placeholder: "Senha atual" %>
   </div>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="actions">
-    <%= f.submit "Update",class: "btn btn-primary btn-block" %>
+    <%= f.submit "Atualizar",class: "btn btn-primary btn-block" %>
 
 <% end %>
-      <h3>Cancel my account</h3>
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete ,class: "btn btn-primary btn-block"%></div>
+      <h3>Cancelar minha conta</h3>
+<div><%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete ,class: "btn btn-primary btn-block"%></div>
 
-<%= link_to "Back", :back %>
+<%= link_to "Voltar", :back %>
   </div>
 
 

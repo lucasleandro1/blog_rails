@@ -28,13 +28,17 @@ gem "pry", "~> 0.14.2"
 
 gem "pry-remote", "~> 0.1.8"
 
-gem "mailcatcher"
-
 gem 'simple_form'
+
+gem 'i18n'
 
 gem "devise"
 
 gem 'kaminari'
+
+gem "redis"
+
+gem "sidekiq"
 
 group :development, :test do
   gem "rspec-rails", "~> 6.1.0"
@@ -56,4 +60,5 @@ end
 
 group :development do
   gem "web-console"
+  gem "mailcatcher"
 end
