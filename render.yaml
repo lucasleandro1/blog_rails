@@ -28,6 +28,4 @@ services:
 
   - type: redis
     name: redis
-    ipAllowlist: []
     plan: free
-    maxmemoryPolicy: noeviction
