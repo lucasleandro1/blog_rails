@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc).page params[:page]
   end
 
   def new
