@@ -4,14 +4,14 @@ namespace :start_services do
     puts "Gems install..."
     system("bundle install")
 
-    # puts "Destroy Database..."
-    # system("rails db:drop")
+    puts "Destroy Database..."
+    system("rails db:drop")
 
-    # puts "Create Database..."
-    # system("rails db:create")
+    puts "Create Database..."
+    system("rails db:create")
 
-    # puts "Migrations..."
-    # system("rails db:migrate")
+    puts "Migrations..."
+    system("rails db:migrate")
 
     puts "Starting Redis server..."
     system("redis-server --daemonize yes")
