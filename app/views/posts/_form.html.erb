@@ -1,5 +1,6 @@
+
 <%= simple_form_for @post do |f| %>
-  <%= f.input :text, required: true, label: false, autofocus: true, autocomplete: "text", class: "form-control", placeholder: "Text"%>
+  <%= f.input :text, required: true, label: false, autofocus: true, autocomplete: "text", class: "form-control", placeholder: "Texto"%>
   <%= f.input :tag, required: true, label: false, autofocus: true, autocomplete: "tag", class: "form-control", placeholder: "Tag" %>
   <% if @post.persisted? && @post.foto.attached? %>
     <div class="post-foto">

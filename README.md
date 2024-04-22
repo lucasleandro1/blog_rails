@@ -1,24 +1,28 @@
 # README
+Blog Rails
+Blog desenvolvido para processo seletivo.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+⚙️ Requisitos
+Antes de começar, certifique-se de ter instalado em sua máquina:
 
-Things you may want to cover:
+Ruby 3.2.2
+Rails 7.1.1
 
-* Ruby version
+🚀 Instrução
+Use o seguinte comando para clonar o repositório:
+git clone https://github.com/lucasleandro1/blog_rails.git
 
-* System dependencies
+Instruções para instalar redis:
+* cd ~
+* wget https://download.redis.io/redis-stable.tar.gz
+* tar xzf redis-stable.tar.gz
+* cd redis-stable
+* make
+* sudo make install
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Rode os comandos:
+* cd blog_rails
+* mailcatcher (Para trocar a senha de usuario se preciso)
+* acesse http://127.0.0.1:1080
+* bundle exec rake start_services:all
+* Acesse o projeto em http://localhost:3000.

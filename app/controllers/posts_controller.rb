@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:notice] = "post created."
-      redirect_to root_path # Use redirect_to para redirecionar para a rota raiz
+      redirect_to root_path
     else
       flash[:error] = "Error when registering post."
       render :new
