@@ -1,35 +1,38 @@
-<div class="cards">
-<% @posts.each do |post| %>
-  <div class="post">
-
-    <h2><%= post.text %> - <%=extract_name(post.user&.email)%></h2>
-    <p class="tag"><%= post.tag %></p>
-    <% if post.foto.attached? %>
-      <%= image_tag(post.foto, class: "post-foto") %>
-    <% end %>
-
-  <h5>Comentários</h5>
-  <% if post.comments.select(&:persisted?).present? %>
-    <% post.comments.select(&:persisted?).each do |comment| %>
-      <div class="comment">
-        <p><%= "#{comment.text} - #{comment.user.nil? ? "Anônimo" : extract_name(comment.user&.email)}" %></p>
+<% if @posts.any? %>
+  <div class="cards">
+    <% @posts.each do |post| %>
+      <div class="post">
+        <h2><%= post.text %> - <%= extract_name(post.user&.email) %></h2>
+        <p class="tag"><%= post.tag %></p>
+        <% if post.foto.attached? %>
+          <%= image_tag(post.foto, class: "post-foto") %>
+        <% end %>
+        <h5>Comentários</h5>
+        <% if post.comments.select(&:persisted?).present? %>
+          <% post.comments.select(&:persisted?).each do |comment| %>
+            <div class="comment">
+              <p><%= "#{comment.text} - #{comment.user.nil? ? "Anônimo" : extract_name(comment.user&.email)}" %></p>
+            </div>
+          <% end %>
+        <% else %>
+          <p>Não há comentários para este post.</p>
+        <% end %>
+        <%= simple_form_for [post, post.comments.build], html: { class: 'comment-form' } do |form| %>
+          <%= form.hidden_field :user_id, value: post.user_id %>
+          <div class="input-comentario">
+            <%= form.input :text, label: false, placeholder: "Escreva seu comentário..." %>
+          </div>
+          <%= form.submit "Comentar", class: "btn btn-primary" %>
+        <% end %>
+        <hr>
       </div>
     <% end %>
-  <% else %>
-    <p>Não há comentários para este post.</p>
-  <% end %>
-  <%= simple_form_for [ post, post.comments.build ], html: { class: 'comment-form' } do |form| %>
-    <% form.hidden_field :user_id, value: post.user_id %>
-    <div class="input-comentario">
-      <%= form.input :text, label: false, placeholder: "Escreva seu comentário..." %>
+    <div class="pagination">
+      <%= paginate @posts %>
     </div>
-    <%= form.submit "Comentar", class: "btn btn-primary" %>
-  <% end %>
-  <hr>
+  </div>
+<% else %>
+  <p>Não há postagens.</p>
 <% end %>
-  <div class="pagination">
-    <%= paginate @posts%>
-  </div>
-  </div>
-</div>
+
 
