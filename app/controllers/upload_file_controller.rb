@@ -9,7 +9,7 @@ class UploadFileController < ApplicationController
 
         # CreatePosts.perform_async(file)
         ::Posts::Creator.new(file).run!
-        redirect_to root_path, alert: "Processing in background!"
+        redirect_to root_path, alert: "Post published!"
       else
         raise StandardError.new('File missing!')
       end
