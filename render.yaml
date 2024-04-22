@@ -23,5 +23,6 @@ services:
         value: 4 # sensible default
   - type: redis
     name: redis
+    ipAllowlist: []
     plan: free
     maxmemoryPolicy: noeviction
