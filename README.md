@@ -12,7 +12,7 @@ redis 7.0
 🚀 Instrução (Produção)
 Acesse o link: https://blog-rails-web.onrender.com/
 
-- Caso queira utilizar um usuário já criado, segue o +login:
+- Caso queira utilizar um usuário já criado, segue o login:
 ```
 exemplo@gmail.com
 123456
