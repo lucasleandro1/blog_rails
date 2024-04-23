@@ -1,11 +1,12 @@
 # README
-Blog Rails
+## Blog Rails
+
 Blog desenvolvido para processo seletivo.
 
 ⚙️ Requisitos
 Antes de começar, certifique-se de ter instalado em sua máquina:
 
-Ruby 3.2.2
+Ruby 3.2.2<br>
 redis 7.0
 
 🚀 Instrução (Produção)
