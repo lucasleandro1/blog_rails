@@ -34,6 +34,15 @@ Rode os comandos:
 * cd ~
 * cd blog_rails
 * bundle install
+* Decomentar as linhas (Ajuste necessário para rodar sem sidekiq em produção):
+```
+app\controllers\upload_file_controller.rb:10
+config\application.rb
+```
+* Comentar a linha (Ajuste necessário para rodar sem sidekiq em produção):
+```
+app\controllers\upload_file_controller.rb:11
+```
 * mailcatcher (Para trocar a senha de usuario se preciso)
 * acesse http://127.0.0.1:1080 caso queira acessar o mailcatcher
 * bundle exec rake start_services:all
