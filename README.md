@@ -38,7 +38,7 @@ Rode os comandos:
 * Decomentar as linhas (Ajuste necessário para rodar sem sidekiq em produção):
 ```
 app\controllers\upload_file_controller.rb:10
-config\application.rb
+config\application.rb:52
 ```
 * Comentar a linha (Ajuste necessário para rodar sem sidekiq em produção):
 ```

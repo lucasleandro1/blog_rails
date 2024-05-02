@@ -1,23 +1,35 @@
 databases:
-  - name: blog_rails_database
-    databaseName: blog_rails_prod
-    user: blog_rails
+  - name: app_database
+    databaseName: app_prod
+    user: app_db
     plan: free
 
 services:
+  - type: redis
+    name: redis-sidekiq
+    plan: free
+    region: oregon
+    maxmemoryPolicy: noeviction
+    ipAllowList: []
   - type: web
-    name: blog_rails_web
+    name: app_web
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
-    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
-    startCommand: "bundle exec rails server"
+    startCommand: bundle exec rails s -d -p 10000 & bundle exec sidekiq -q default
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: blog_rails_database
+          name: app_database
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
-        value: 4 # sensible default
+        value: 4
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: redis-sidekiq
+          property: connectionString
+      - key: PORT
+        value: 10000

@@ -7,8 +7,8 @@ class UploadFileController < ApplicationController
       if params.keys.include?("file")
         file = params[:file].tempfile.read
 
-        # CreatePosts.perform_async(file)
-        ::Posts::Creator.new(file).run!
+        CreatePosts.perform_async(file)
+        # ::Posts::Creator.new(file).run!
         redirect_to root_path, alert: "Post published!"
       else
         raise StandardError.new('File missing!')
