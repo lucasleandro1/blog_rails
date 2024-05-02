@@ -10,7 +10,7 @@ Ruby 3.2.2<br>
 redis 7.0
 
 🚀 Instrução (Produção)
-Acesse o link: https://blog-rails-web.onrender.com/
+Acesse o link: https://app-web-8j5f.onrender.com/
 
 - Caso queira utilizar um usuário já criado, segue o login:
 ```
